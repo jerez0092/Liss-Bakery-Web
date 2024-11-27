@@ -35,19 +35,38 @@
             margin: 0;
         }
 
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: 20px auto;
         }
 
-        .gallery img {
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .carousel img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+
+        .carousel img.active {
+            display: block;
+        }
+
+        .carousel .prev, .carousel .next {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .carousel .prev {
+            left: 0;
+        }
+
+        .carousel .next {
+            right: 0;
         }
 
         footer {
@@ -70,18 +89,35 @@
         <a href="index.html">
             <img src="lisslogo.png" alt="Logo de LISS BAKERY">
             </a>
-        <h1>BASICOS / TRADICIONALES</h1>
+        <h1>TRADICIONALES</h1>
     </header>
 
-    <div class="gallery">
-        <img src="lisslogo.png" alt="Imagen 1">
+    <div class="carousel">
+        <img src="catalogo/basicos/basic1.png" alt="Imagen 1" class="active">
         <img src="lisslogo.png" alt="Imagen 2">
-        <img src="lisslogo.png" alt="Imagen 3">
+        <img src="catalogo/basicos/basic1.jpg" alt="Imagen 3">
         <img src="lisslogo.png" alt="Imagen 4">
+        <div class="prev" onclick="changeSlide(-1)">&#10094;</div>
+        <div class="next" onclick="changeSlide(1)">&#10095;</div>
     </div>
 
     <footer>
         <p>Ten un dulce día.</p>
     </footer>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+    </script>
 </body>
 </html>
