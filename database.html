@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Pedidos</title>
+    <link rel="stylesheet" href="basestyle.css">
+</head>
+<body>
+    <a href="index.html">
+        <img src="lisslogo.png" alt="Logo de LISS BAKERY">
+        </a>
+    <h1>Ingresar Pedidos</h1>
+    <br></br>
+    <div class="form-container">
+        <input type="text" Id="cliente" placeholder="Nombre del Cliente">
+        <input type="text" Id="producto" placeholder="Producto">
+        <input type="text" Id="detalle" placeholder="Descripción del Pedido">
+        <input type="date" Id="fecha_pedido">
+        <input type="date" Id="fecha_entrega">
+        <input type="number" Id="total" name="Total" step="0.01">
+        <button onclick="agregarPedido()">Agregar Pedido</button>
+    </div>
+    <div class="pedidosview"><br></br>
+        <a href="pedidosview.html">Ver Pedidos Agendados</a>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

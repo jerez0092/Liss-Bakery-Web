@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap');
+
+body {
+    background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+}
+
+header img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+h2 {        
+    font-family: cursive;
+    color: #4B0082;
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+
+.gallery a {
+    position: relative;
+    margin: 10px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+}
+
+.gallery a .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    width: 100px;
+    height: 100px;
+    background-image: url('lisslogo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.gallery a:hover .overlay {
+    display: block;
+}
+
+footer {
+    text-align: center;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+p {
+    font-size: 1em;
+    color: black;
+}
+
+img { 
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+.welcome {
+    font-size: 2em;
+    text-align: center;
+    margin: 20px 0;
+    color: #4B0082;
+}
+.catalogo {
+    font-size: 2em;
+    text-align: center;
+    margin: 5px 0;
+    color: #4B0082;
+}
+
+.columna-derecha {
+    position: initial;
+    width: 250px;
+    padding: 20px;
+    border-left: 1px solid cadetblue;
+}
+.columna-derecha h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+.columna-derecha ul {
+    list-style-type: none;
+    padding: 0;
+}
+.columna-derecha ul li {
+    margin-bottom: 10px;
+}
+.columna-derecha ul li a {
+    text-decoration: none;
+    color: black;
+}
+.columna-derecha ul li a:hover {
+    text-decoration: underline;
+}
