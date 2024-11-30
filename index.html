@@ -3,50 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LISS BAKERY WEB</title>
+    <title>Liss Bakery WEB</title>
     <link rel="icon" type="image/x-icon" href="lisslogo.ico">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: linear-gradient(to right, rgb(113, 211, 218), rgb(248, 123, 210), rgb(178, 3, 194));
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            align-items: center;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        .box {
+            width: 300px; /* Asegúrate de especificar las unidades */
+            height: 400px;
+            position: relative;
+            cursor: pointer;
+            margin: auto; /* Centra la caja en la página */
+        }
+        img {
+            width: 100%;
+        }
+
+        .slider, .slider1, .slider2 {
+            display: flex; /* Utiliza flexbox */
+            justify-content: center; /* Centra el contenido horizontalmente */
+            position: relative;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            transition: 1s ease-in-out;
+        }
+
+        .slider {
+            font-size: 30px;
+            color: white;
+            height: 5px;
+            padding: 10px 0;
+        }
+
+        .slider1 {
+            height: 0;
+            overflow: hidden;
+        }
+
+        .box:hover .slider {
+            height: 50px;
+        }
+        .box:hover .slider1 {
+            height: 20px;
+        }
+        .boxhover .slider2 {
+            height: 20px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="index.html">
-            <img src="lisslogo.png" alt="Logo de LISS BAKERY">
-        </a>
-        <h2>LISS BAKERY</h2>
-    </header>
+    <header><br>Bienvenidos</header>
+    <main>
+        <div class="box">
+            <img src="lisslogo.png">
+            <div class="slider">Liss Bakery</div>
+            <div class="slider1">
+                <a href="catalogo.html">CATALOGO</a> <p>---</p><a href="politicas.html"> POLITICAS</a> <p>---</p> <a href="sobreproducto.html">INFO</a>
+            </div>
+            <div class="slider2">
+                <a href="https://wa.me/+50363149600"><br><br>Contactanos</a>
+            </div>
 
-    <p class="welcome">¡Bienvenidos a un lugar de mucha dulzura!</p>
-    <p class="catalogo">Mira nuestro catalogo</p>
-
-    <div class="gallery">
-        <a href="cumpleaños.html">
-            <img src="catalogo/cumpleaños/cump1.png" alt="Imagen 1">
-            <div class="overlay"></div>
-        </a>
-        <a href="bodas.html">
-            <img src="catalogo/boda/boda1.png" alt="Imagen 2">
-            <div class="overlay"></div>
-        </a>
-        <a href="Tradicionales.html">
-            <img src="catalogo/basicos/basic1.png" alt="Imagen 3">
-            <div class="overlay"></div>
-        </a>
-        <a href="Tematicos.html">
-            <img src="catalogo/tematicos/pers1.png" alt="Imagen 4">
-            <div class="overlay"></div>
-        </a>
-    </div>
-
-    <div class="columna-derecha">
-        <ul>
-            <li><a href="politicas.html">Politicas.</a></li>
-            <li><a href="sobreproducto.html">Sobre Nuestro Producto.</a></li>
-            <li><a href="cuidos.html">Cuidos y Recomendaciones para nuestros productos.</a></li>
-            <li><a href="sesion.html"><img src="lisslogo.ico" alt="welcome"></a></li>
-        </ul>
-    </div>
-    
-    <footer>
-    </footer>
+        </div>
+    </main>
 </body>
 </html>
