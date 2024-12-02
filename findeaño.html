@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin de año 2024</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita el scroll */
+            display: flex; /* Utiliza flexbox para centrar contenido */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0; /* Añade margen para separación */
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px; /* Añade un espacio entre las imágenes */
+        }
+        .image-container {
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .image-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .image-view img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Evento fin de Año 2024 <br>LISS BAKERY</h1>
+
+    <h2>Gracias a Dios podemos decir que llegamos hasta aqui.</h2>
+
+    <p>El 5 de mayo de 2021, LISS BAKERY abria sus puertas</p>
+
+    <div class="image-grid">
+        <div class="image-container" onclick="showImage('fin de año/1.jpg')">
+            <img src="fin de año/1.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImage('fin de año/2.jpg')">
+            <img src="fin de año/2.jpg" alt="Imagen 2">
+        </div>
+        <div class="image-container" onclick="showImage('fin de año/3.jpg')">
+            <img src="fin de año/3.jpg" alt="Imagen 3">
+        </div>
+        <div class="image-container" onclick="showImage('fin de año/4.jpg')">
+            <img src="fin de año/4.jpg" alt="Imagen 4">
+        </div>
+    </div>
+    <h2>Ha sido un reto llegar a Diciembre 2024 pero nuestro equipo ha superado muchas adversidades</h2>
+    <p>La Familia LISS BAKERY no solo consta de empleados, hay mas personas involucradas que nos ayudan a crecer</p>
+    <div class="image-grid">
+        <div class="image-container" onclick="showImage('lisslogo.png')">
+            <img src="lisslogo.png" alt="Imagen 5">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.jpg')">
+            <img src="catalogo/cumpleaños/cump1.jpg" alt="Imagen 6">
+        </div>
+        <div class="image-container" onclick="showImage('lisslogo.png')">
+            <img src="lisslogo.png" alt="Imagen 7">
+        </div>
+        <div class="image-container" onclick="showImage('lisslogo.png')">
+            <img src="lisslogo.png" alt="Imagen 8">
+        </div>
+    <h2>Gracias a Dios y a nuestros clientes por hacer relaidad un año mas de trabajo.</h2>
+    </div>
+
+    <div class="image-view" id="imageView">
+        <img id="imageViewImg" src="" alt="Imagen Grande">
+    </div>
+
+    <script>
+        const snowflakeSymbols = ['❄️', '❅', '❆'];
+        const numSnowflakes = 100;
+        
+        for (let i = 0; i < numSnowflakes; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            snowflake.style.opacity = Math.random();
+            document.body.appendChild(snowflake);
+        }
+
+        function showImage(src) {
+            const imageView = document.getElementById('imageView');
+            const imageViewImg = document.getElementById('imageViewImg');
+            imageViewImg.src = src;
+            imageView.style.display = 'flex';
+            imageView.onclick = function() {
+                imageView.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
