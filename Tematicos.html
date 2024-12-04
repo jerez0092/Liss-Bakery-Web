@@ -2,20 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LISS BAKERY CATALOGO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>catalogo</title>
     <link rel="icon" type="image/x-icon" href="lisslogo.ico">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300&display=swap');
-
         body {
             background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
             font-family: 'Roboto', sans-serif;
             color: #333;
             margin: 0;
             padding: 0;
+            display: flex; /* Utiliza flexbox para centrar contenido */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-
         header {
             display: flex;
             align-items: center;
@@ -23,64 +25,56 @@
         }
 
         header img {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
+            width: 100px;
+            height: 100px;
+            margin-right: 5px;
         }
-
         h1 {
-            font-family: 'arial', cursive;
-            color: #4B0082;
-            font-size: 3em;
-            margin: 0;
-        }
-
-        .carousel {
-            position: relative;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        .carousel img {
-            width: 100%;
-            height: auto;
-            display: none;
-        }
-
-        .carousel img.active {
-            display: block;
-        }
-
-        .carousel .prev, .carousel .next {
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 10px;
             color: white;
-            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin: 20px 0; /* Añade margen para separación */
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px; /* Añade un espacio entre las imágenes */
+        }
+        .image-container {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
             cursor: pointer;
         }
-
-        .carousel .prev {
-            left: 0;
-        }
-
-        .carousel .next {
-            right: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.1);
-            position: fixed;
-            bottom: 0;
+        .image-container img {
             width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .image-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .image-view img {
+            max-width: 90%;
+            max-height: 90%;
         }
 
-        p {
-            font-size: 1.5em;
-            color: #4B0082;
+        @media (max-width: 600px) {
+            .image-container {
+                width: 80px;
+                height: 80px;
+            }
+            h1, h2, p {
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -88,35 +82,49 @@
     <header>
         <a href="index.html">
             <img src="lisslogo.png" alt="Logo de LISS BAKERY">
-            </a>
-        <h1>TEMÁTICOS / PERSONALIZADOS</h1>
+        </a>
+    <h1>LISS BAKERY<br>PERSONALIZADOS</h1>
     </header>
-
-    <div class="carousel">
-        <img src="catalogo/tematicos/pers1.png" alt="Imagen 1" class="active">
-        <img src="lisslogo.png" alt="Imagen 2">
-        <img src="catalogo/tematicos/pers1.jpg" alt="Imagen 3">
-        <img src="lisslogo.png" alt="Imagen 4">
-        <div class="prev" onclick="changeSlide(-1)">&#10094;</div>
-        <div class="next" onclick="changeSlide(1)">&#10095;</div>
+    <div class="image-grid">
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.png')">
+            <img src="catalogo/cumpleaños/cump1.png" alt="Imagen 1">
+        </div>
+    </div>
+    <div><p></p></div>
+    <div class="image-grid">
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.png')">
+            <img src="catalogo/cumpleaños/cump1.png" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.jpg')">
+            <img src="catalogo/cumpleaños/cump1.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/Principal/lisslogo.png')">
+            <img src="catalogo/Principal/lisslogo.png" alt="Imagen 3">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.png')">
+            <img src="catalogo/cumpleaños/cump1.png" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/cumpleaños/cump1.jpg')">
+            <img src="catalogo/cumpleaños/cump1.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImage('catalogo/Principal/lisslogo.png')">
+            <img src="catalogo/Principal/lisslogo.png" alt="Imagen 3">
+        </div>
+    </div>
+    <div><p><br><br>Derechos reservados Liss Bakery 2024<br></p></div>
+    <div class="image-view" id="imageView">
+        <img id="imageViewImg" src="" alt="Imagen Grande">
     </div>
 
-    <footer>
-        <p>Ten un dulce día.</p>
-    </footer>
-
     <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel img');
-
-        function showSlide(index) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (index + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-
-        function changeSlide(direction) {
-            showSlide(currentSlide + direction);
+        function showImage(src) {
+            const imageView = document.getElementById('imageView');
+            const imageViewImg = document.getElementById('imageViewImg');
+            imageViewImg.src = src;
+            imageView.style.display = 'flex';
+            imageView.onclick = function() {
+                imageView.style.display = 'none';
+            }
         }
     </script>
 </body>
