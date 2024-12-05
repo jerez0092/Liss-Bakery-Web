@@ -5,13 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Pedidos</title>
     <link rel="stylesheet" href="basestyle.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script>
+        // Configuración de Firebase (reemplaza con tus credenciales)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCywLngPooOJLRac9nu5fB3q4vI3rIMnrk",
+            authDomain: "liss-manager.firebaseapp.com",
+            projectId: "liss-manager",
+            storageBucket: "liss-manager.firebasestorage.app",
+            messagingSenderId: "480550759414",
+            appId: "1:480550759414:web:5bb77105f846e582c4f5d7",
+            measurementId: "G-HDGC0E4SZ7"
+        };
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
 </head>
 <body>
     <a href="database.html">
         <img src="catalogo/Principal/Logobasic.png" alt="Logo de LISS BAKERY">
-        </a>
+    </a>
     <h1>Mostrar pedidos</h1>
+    <input type="date" id="fecha_entrega" placeholder="Fecha de Entrega">
+    <button onclick="buscarPedidos()">Buscar Pedidos</button>
     <div id="pedidos"></div>
-    <script src="script.js"></script>
+    <script src="view.js"></script>
 </body>
 </html>
