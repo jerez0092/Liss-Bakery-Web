@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Catalogo Especial</title>
+    <link rel="icon" type="image/x-icon" href="lisslogo.ico">
+    
+    <style>
+        body {
+            background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 1em;
+            user-select: none;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .image-container {
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+        .image-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            gap: 20px; /* Espacio entre las imágenes */
+        }
+        .image-view img {
+            max-width: 30%;
+            max-height: 90%;
+        }
+
+        @media (max-width: 600px) {
+            .image-container {
+                width: 80px;
+                height: 80px;
+            }
+            h1, h2, p {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="">
+            <img src="lisslogo.png" alt="Logo de LISS BAKERY">
+        </a>
+    <h1>Catalogo de temporada. <br>LISS BAKERY</h1>
+    </header>
+
+    <div class="image-grid">
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/11.jpg', 'catalogo/navideños2024/12.jpg', 'catalogo/navideños2024/13.jpg'])">
+            <img src="catalogo/navideños2024/11.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/21.jpg', 'catalogo/navideños2024/22.jpg', 'catalogo/navideños2024/23.jpg'])">
+            <img src="catalogo/navideños2024/21.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/31.jpg', 'catalogo/navideños2024/32.jpg', 'catalogo/navideños2024/33.jpg'])">
+            <img src="catalogo/navideños2024/31.jpg" alt="Imagen 1">
+        </div>
+    </div>
+    <div><p></p></div>
+    <div class="image-grid">
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/41.jpg', 'catalogo/navideños2024/42.jpg', 'catalogo/navideños2024/43.jpg'])">
+            <img src="catalogo/navideños2024/41.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/51.jpg', 'catalogo/navideños2024/52.jpg', 'catalogo/navideños2024/53.jpg'])">
+            <img src="catalogo/navideños2024/51.jpg" alt="Imagen 1">
+        </div>
+        <div class="image-container" onclick="showImages(['catalogo/navideños2024/61.jpg', 'catalogo/navideños2024/62.jpg', 'catalogo/navideños2024/63.jpg'])">
+            <img src="catalogo/navideños2024/61.jpg" alt="Imagen 1">
+        </div>
+    </div>
+    <div>
+        <h2>Haz tu pedido como minimo 3 dias antes de la fecha que deseas que sea entregado.</h2>
+        <p>Consulta con el vendedor la disponibilidad de ingredientes, rellenos y remojos. <a href="https://wa.me/+50363149600">Contactanos</a></p>
+    </div>
+        <div><p>Derechos reservados Liss Bakery 2024</p></div>
+
+    <div class="image-view" id="imageView">
+        <img id="imageViewImg1" src="" alt="Imagen Grande">
+        <img id="imageViewImg2" src="" alt="Imagen Grande">
+        <img id="imageViewImg3" src="" alt="Imagen Grande">
+    </div>
+
+    <script>
+        function showImages(srcArray) {
+            const imageView = document.getElementById('imageView');
+            const imageViewImg1 = document.getElementById('imageViewImg1');
+            const imageViewImg2 = document.getElementById('imageViewImg2');
+            const imageViewImg3 = document.getElementById('imageViewImg3');
+            imageViewImg1.src = srcArray[0];
+            imageViewImg2.src = srcArray[1];
+            imageViewImg3.src = srcArray[2];
+            imageView.style.display = 'flex';
+            imageView.onclick = function() {
+                imageView.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
