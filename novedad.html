@@ -55,8 +55,8 @@
         }
         .image-container {
             position: relative;
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             overflow: hidden;
             cursor: pointer;
         }
@@ -97,6 +97,19 @@
             max-width: 30%;
             max-height: 90%;
         }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
 
         @media (max-width: 600px) {
             .image-container {
@@ -119,6 +132,7 @@
 
     <div>
         <p>Toca la imagen del pastel que te llame la atención para ver más fotos de ese pastel, si usas smartphone ponlo en vertical para ver con mayor tamaño las imágenes.<br></p>
+        <p>Si pasas el dedo o el mause por una imagen verás el nombre del pastel</p>
     </div>
 
     <div class="image-grid">
@@ -152,8 +166,82 @@
     </div>
     <div>
         <h2>Haz tu pedido como mínimo 3 días antes de la fecha que deseas que sea entregado.</h2>
-        <p>Consulta con el vendedor la disponibilidad de ingredientes, rellenos y remojos. <a href="https://wa.me/+50363149600">Contáctanos</a></p>
+        <p>Consulta con el vendedor la disponibilidad de ingredientes y rellenos. <a href="https://wa.me/+50363149600">Contáctanos</a></p>
     </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Pastel</th>
+                <th>Tipo de pastel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Santa Cake</td>
+                <td>Personalizado</td>
+            </tr>
+            <tr>
+                <td>Choco Ball</td>
+                <td>Personalizado</td>
+            </tr>            <tr>
+                <td>Jalea Ball</td>
+                <td>Personalizado</td>
+            </tr>            <tr>
+                <td>Arbol Cake</td>
+                <td>Tradicional</td>
+            </tr>            <tr>
+                <td>MerryFlower</td>
+                <td>Tradicional</td>
+            </tr>            <tr>
+                <td>Gorro Cake</td>
+                <td>Tradicional</td>
+            </tr>
+        </tbody>
+    </table>    
+
+    <table>
+        <thead>
+            <tr>
+                <th>Porciones / Tamaño</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>4 a 6 porciones</td>
+                <td>Tradicional</td>
+                <td>$10</td>
+                <td>Personalizado</td>
+                <td>$12</td>
+            </tr>
+            <tr>
+                <td>4 a 6 porciones</td>
+                <td>Tradicional</td>
+                <td>$10</td>
+                <td>Personalizado</td>
+                <td>$12</td>
+            </tr>
+            <tr>
+                <td>4 a 6 porciones</td>
+                <td>Tradicional</td>
+                <td>$10</td>
+                <td>Personalizado</td>
+                <td>$12</td>
+            </tr>
+            <tr>
+                <td>4 a 6 porciones</td>
+                <td>Tradicional</td>
+                <td>$10</td>
+                <td>Personalizado</td>
+                <td>$12</td>
+            </tr>
+        </tbody>
+    </table>
+
     <div><p>Derechos reservados Liss Bakery 2024</p></div>
 
     <div class="image-view" id="imageView">
