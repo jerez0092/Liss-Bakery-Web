@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Catalogo Especial</title>
+    <title>Tablas de precio y sabores</title>
     <link rel="icon" type="image/x-icon" href="lisslogo.ico">
     
     <style>
@@ -128,73 +128,97 @@
         <a href="">
             <img src="lisslogo.png" alt="Logo de LISS BAKERY">
         </a>
-    <h1>Catalogo de temporada. <br>LISS BAKERY</h1>
+    <h1>Tablas de precio y sabores de ingredientes. <br>LISS BAKERY</h1>
     </header>
 
     <div>
-        <p>Toca la imagen del pastel que te interese para ver más fotos. Si usas un smartphone, colócalo en vertical para ver las imágenes en mayor tamaño.<br></p>
-        <p>Pasa el dedo o el mouse sobre una imagen para ver el nombre del pastel.</p>
+        <h2>Liss Bakery te ofrece dos tipos de pasteles que se adaptan a tus necesidades.</h2>
     </div>
 
-    <div class="image-grid">
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/11.jpg', 'catalogo/navideños2024/12.jpg', 'catalogo/navideños2024/13.jpg'])">
-            <img src="catalogo/navideños2024/11.jpg" alt="Imagen 1">
-            <div class="caption">Santa Cake</div>
-        </div>
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/21.jpg', 'catalogo/navideños2024/22.jpg', 'catalogo/navideños2024/23.jpg'])">
-            <img src="catalogo/navideños2024/21.jpg" alt="Imagen 2">
-            <div class="caption">Choco ball</div>
-        </div>
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/31.jpg', 'catalogo/navideños2024/32.jpg', 'catalogo/navideños2024/33.jpg'])">
-            <img src="catalogo/navideños2024/31.jpg" alt="Imagen 3">
-            <div class="caption">Jalea Cover</div>
-        </div>
-    </div>
-    <div><p></p></div>
-    <div class="image-grid">
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/41.jpg', 'catalogo/navideños2024/42.jpg', 'catalogo/navideños2024/43.jpg'])">
-            <img src="catalogo/navideños2024/41.jpg" alt="Imagen 4">
-            <div class="caption">Arbol cake</div>
-        </div>
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/51.jpg', 'catalogo/navideños2024/52.jpg', 'catalogo/navideños2024/53.jpg'])">
-            <img src="catalogo/navideños2024/51.jpg" alt="Imagen 5">
-            <div class="caption">MerryFlower</div>
-        </div>
-        <div class="image-container" onclick="showImages(['catalogo/navideños2024/61.jpg', 'catalogo/navideños2024/62.jpg', 'catalogo/navideños2024/63.jpg'])">
-            <img src="catalogo/navideños2024/62.jpg" alt="Imagen 6">
-            <div class="caption">Gorro Cake</div>
-        </div>
-    </div>
-    
     <table>
         <thead>
             <tr>
-                <th>Nombre del Pastel</th>
                 <th>Tipo de pastel</th>
+                <th>Relleno</th>
+                <th>Remojo</th>
+                <th>Sabor de torta</th>
             </tr>
         </thead>
         <tbody> 
-            <tr onclick="showImages(['catalogo/navideños2024/11.jpg', 'catalogo/navideños2024/12.jpg', 'catalogo/navideños2024/13.jpg'])"> 
-                <td>Santa Cake</td> <td>Personalizado</td> 
-            </tr> 
-            <tr onclick="showImages(['catalogo/navideños2024/21.jpg', 'catalogo/navideños2024/22.jpg', 'catalogo/navideños2024/23.jpg'])"> 
-                <td>Choco Ball</td> <td>Personalizado</td> 
-            </tr> 
-            <tr onclick="showImages(['catalogo/navideños2024/31.jpg', 'catalogo/navideños2024/32.jpg', 'catalogo/navideños2024/33.jpg'])"> 
-                <td>Jalea Cover</td> <td>Personalizado</td> 
-            </tr> 
-            <tr onclick="showImages(['catalogo/navideños2024/41.jpg', 'catalogo/navideños2024/42.jpg', 'catalogo/navideños2024/43.jpg'])"> 
-                <td>Arbol Cake</td> <td>Tradicional</td> 
-            </tr> 
-            <tr onclick="showImages(['catalogo/navideños2024/51.jpg', 'catalogo/navideños2024/52.jpg', 'catalogo/navideños2024/53.jpg'])"> 
-                <td>MerryFlower</td> <td>Tradicional</td> 
-            </tr> 
-            <tr onclick="showImages(['catalogo/navideños2024/61.jpg', 'catalogo/navideños2024/62.jpg', 'catalogo/navideños2024/63.jpg'])"> 
-                <td>Gorro Cake</td> 
+            <tr> 
                 <td>Tradicional</td> 
+                <td>Crema pastelera</td>
+                <td>Remojo tradicional de canela</td>
+                <td>Vainilla</td>
+            </tr> 
+            <tr> 
+                <td>Personalizado</td> 
+                <td>A elección del cliente</td>
+                <td>A elección del cliente</td>
+                <td>A elección del cliente</td>
             </tr> 
         </tbody>
     </table>    
+
+    <div>
+        <h2>Los clientes pueden hacer la combinación que deseen con los siguientes sabores, detallados en la tabla a continuación:</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Relleno</th>
+                <th>Remojo</th>
+                <th>Sabor de torta</th>
+            </tr>
+        </thead>
+        <tbody> 
+            <tr> 
+                <td>Crema pastelera</td>
+                <td>Remojo tradicional de canela</td>
+                <td>Vainilla</td>
+            </tr> 
+            <tr> 
+                <td>Caramelo</td>
+                <td>3 leches (Costo extra según tamaño de pastel)</td>
+                <td>chocolate</td>
+            </tr> 
+            <tr> 
+                <td>Chocolate</td>
+                <td>Café</td>
+                <td>Marmoleada</td>
+            </tr> 
+            <tr>  
+                <td>Crema de fresa</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr> 
+                <td>Crema de fresa (con gomitas o mashmellow)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Crema de chocolate (con gomitas o mashmellow)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr> 
+                <td>Crema batida con caramelo</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr> 
+                <td>Crema de café (con maní o chispas de chocolate)</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table> 
+
+    <div>
+        <h2>Precios</h2>
+    </div>
 
     <table>
         <thead>
@@ -250,28 +274,7 @@
         <p>Realiza tu pedido o resuelve tus dudas a través de este enlace: <a href="https://wa.me/+50363149600">Contáctanos</a></p>
     </div>
 
-    <div><p>Derechos reservados Liss Bakery 2024<a href="tablas.html"></a>Info</p></div>
+    <div><p>Derechos reservados Liss Bakery 2024</p></div>
 
-    <div class="image-view" id="imageView">
-        <img id="imageViewImg1" src="" alt="Imagen Grande">
-        <img id="imageViewImg2" src="" alt="Imagen Grande">
-        <img id="imageViewImg3" src="" alt="Imagen Grande">
-    </div>
-
-    <script>
-        function showImages(srcArray) {
-            const imageView = document.getElementById('imageView');
-            const imageViewImg1 = document.getElementById('imageViewImg1');
-            const imageViewImg2 = document.getElementById('imageViewImg2');
-            const imageViewImg3 = document.getElementById('imageViewImg3');
-            imageViewImg1.src = srcArray[0];
-            imageViewImg2.src = srcArray[1];
-            imageViewImg3.src = srcArray[2];
-            imageView.style.display = 'flex';
-            imageView.onclick = function() {
-                imageView.style.display = 'none';
-            }
-        }
-    </script>
 </body>
 </html>
