@@ -33,11 +33,12 @@
             padding: 20px;
             margin-bottom: 20px;
             display: flex;
-            align-items: center;
+            flex-direction: column; /* Cambiado para mejor rendimiento móvil */
+            align-items: center; /* Centra el contenido */
         }
         .featured h2 {
             color: #444;
-            margin-right: 20px;
+            margin-bottom: 10px; /* Cambiado para mejor rendimiento móvil */
         }
         h3 {
             color: bisque;
@@ -57,7 +58,8 @@
             padding: 5px;
         }
         .featured img {
-            max-width: 225px;
+            max-width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+            height: auto;
             border-radius: 10px;
         }
         .games-list h3 {
@@ -73,12 +75,29 @@
             padding: 10px;
             border-radius: 8px;
             display: flex;
-            align-items: center;
+            flex-direction: column; /* Cambiado para mejor rendimiento móvil */
+            align-items: center; /* Centra el contenido */
         }
         .games-list img {
-            max-width: 100px;
+            max-width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+            height: auto;
             border-radius: 8px;
-            margin-left: 20px;
+            margin-top: 10px; /* Margen superior para separar texto de imagen */
+        }
+
+        /* Media Queries para optimizar en dispositivos móviles */
+        @media (min-width: 600px) {
+            .featured, .games-list li {
+                flex-direction: row; /* Cambia a fila en pantallas más grandes */
+                align-items: flex-start; /* Ajusta la alineación para pantallas grandes */
+            }
+            .featured h2 {
+                margin-right: 20px; /* Margen derecho en pantallas grandes */
+            }
+            .games-list img {
+                margin-left: 20px; /* Margen izquierdo en pantallas grandes */
+                margin-top: 0; /* Elimina margen superior en pantallas grandes */
+            }
         }
     </style>
 </head>
