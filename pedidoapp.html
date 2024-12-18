@@ -154,6 +154,8 @@ function generateImage() {
    canvas.width = 600;
    canvas.height = 600;
    var ctx = canvas.getContext('2d');
+   ctx.fillStyle = 'white'; 
+   ctx.fillRect(0, 0, canvas.width, canvas.height);
    var form = document.getElementById('cakeForm');
    var data = new FormData(form);
    var text = 'Pedido de Pastel:\n\n';
