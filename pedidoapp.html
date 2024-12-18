@@ -26,6 +26,9 @@
 
 <form id="cakeForm" action="/submit-order" method="post">
 
+  <label for="currentDate">Fecha de Agendamiento:</label> 
+  <input type="text" id="currentDate" name="currentDate" readonly>
+  <p></p>
   <label for="cakeType">Elige el tipo de pastel:</label>
   <select id="cakeType" name="cakeType">
     <option value="">Selecciona el tipo de pastel</option>
@@ -47,10 +50,19 @@
     <p></p>
     <label for="extraTraditional">Fecha de entrega:</label>
     <input type="text" id="extraTraditional" name="extraTraditional" placeholder="Color del pastel">
-    <label for="style">Solo el Borde o todo el pastel:</label>
+    <label for="style">Solo el decorado o todo el pastel:</label>
     <select id="style" name="style">
-      <option value="borde">Borde</option>
+      <option value="borde">Decorado</option>
       <option value="completo">Completo</option>
+    </select>
+    <p></p>
+    <label for="cobertura">En el borde:</label>
+    <select id="cobertura" name="cobertura">
+      <option value="liso">Liso</option>
+      <option value="caramelo">Caramelo</option>
+      <option value="chocolate">chocolate</option>
+      <option value="dulce">Dulce</option>
+      <option value="galleta">Galleta</option>
     </select>
     <p></p>
     <label for="date">Selecciona la fecha del pedido:</label>
@@ -58,12 +70,24 @@
     <p></p>
     <label for="traditionalPrice">Selecciona el precio:</label>
     <select id="traditionalPrice" name="traditionalPrice">
+      <option value="0">Seleccione un precio Redondo</option>
       <option value="5">1 a 3 porciones - $5.00</option>
       <option value="8">4 a 6 porciones - $8.00</option>
       <option value="11">8 a 10 porciones - $11.00</option>
       <option value="15">12 a 15 porciones - $15.00</option>
       <option value="20">20 a 25 porciones - $20.00</option>
-      <option value="consulta">30 a 100 porciones - Consultar en tienda</option>
+      <option value="27.50">30 a 35 porciones - $27.50</option>
+      <option value="32">40 a 50 porciones - $32.00</option>
+      <option value="40">50 a 60 porciones - $40.00</option>
+      <option value="50">70 a 80 porciones - $50.00</option>
+      <option value="60">85 a 90 porciones - $60.00</option>
+      <option value="0">Seleccione un precio Cuadrado</option>
+      <option value="18">14 a 16 porciones - $18.00</option>
+      <option value="25">20 a 30 porciones - $25.00</option>
+      <option value="30">30 a 40 porciones - $30.00</option>
+      <option value="40">50 a 60 porciones - $40.00</option>
+      <option value="50">75 a 80 porciones - $50.00</option>
+      <option value="65">90 a 100 porciones - $65.00</option>
     </select>
   </div>
 
@@ -107,11 +131,24 @@
     <p></p>
     <label for="customPrice"><p></p>Selecciona el precio:</label>
     <select id="customPrice" name="customPrice">
+      <option value="0">Seleccione un precio Redondo</option>
+      <option value="6.50">1 a 3 porciones - $6.50</option>
       <option value="12">4 a 6 porciones - $12.00</option>
-      <option value="16.5">8 a 10 porciones - $16.50</option>
+      <option value="16.50">8 a 10 porciones - $16.50</option>
       <option value="22">12 a 15 porciones - $22.00</option>
       <option value="30">20 a 25 porciones - $30.00</option>
-      <option value="consulta_personalizado">30 a 100 porciones - Consultar en tienda</option>
+      <option value="37">30 a 35 porciones - $37.00</option>
+      <option value="42">40 a 50 porciones - $42.00</option>
+      <option value="48">50 a 60 porciones - $48.00</option>
+      <option value="60">70 a 80 porciones - $60.00</option>
+      <option value="70">85 a 90 porciones - $70.00</option>
+      <option value="0">Seleccione un precio Cuadrado</option>
+      <option value="25">14 a 16 porciones - $25.00</option>
+      <option value="35">20 a 30 porciones - $35.00</option>
+      <option value="40">30 a 40 porciones - $40.00</option>
+      <option value="48">50 a 60 porciones - $48.00</option>
+      <option value="60">75 a 80 porciones - $60.00</option>
+      <option value="75">90 a 100 porciones - $75.00</option>
     </select>
   </div>
   
@@ -140,6 +177,9 @@
 </form>
 
 <script type="text/javascript">
+document.addEventListener('DOMContentLoaded', (event) => { 
+  var currentDate = new Date().toISOString().split('T')[0]; 
+  document.getElementById('currentDate').value = currentDate; });
 // JavaScript para mostrar/ocultar opciones según el tipo de pastel seleccionado
 document.getElementById('cakeType').addEventListener('change', function() {
    var cakeType = this.value;
@@ -158,7 +198,9 @@ function generateImage() {
    ctx.fillRect(0, 0, canvas.width, canvas.height);
    var form = document.getElementById('cakeForm');
    var data = new FormData(form);
-   var text = 'Pedido de Pastel:\n\n';
+   var text = 'Liss Bakery\nRegistro de pedido:\n\n';
+
+   var currentDate = data.get('currentDate'); text += 'Fecha de Agendamiento: ' + currentDate + '\n';
 
    var cakeType = data.get('cakeType');
    text += 'Tipo de Pastel: ' + (cakeType === 'traditional' ? 'Tradicional' : 'Personalizado') + '\n';
@@ -172,7 +214,9 @@ function generateImage() {
    var extra = cakeType === 'traditional' ? data.get('extraTraditional') : data.get('extraCustom');
    text += 'Color de Pastel: ' + extra + '\n';
 
-   var style = data.get('style'); text += 'El color se aplicara:' + (style === 'borde' ? ' Borde' : ' Completo') + '\n';
+   var style = data.get('style'); text += 'El color se aplicara:' + (style === 'borde' ? ' en el Decorado' : ' Completo') + '\n';
+
+   var cobertura = data.get('cobertura'); text += 'En el Borde: ' + cobertura + '\n';
 
    var date = data.get('date'); text += 'Fecha del Pedido: ' + date + '\n';
 
@@ -180,12 +224,12 @@ function generateImage() {
        text += 'Relleno: Crema pastelera\n';
        text += 'Remojo: Tradicional de canela\n';
        text += 'Sabor de Torta: Vainilla\n';
-       text += 'Precio: ' + data.get('traditionalPrice') + '\n';
+       text += 'Precio: $' + data.get('traditionalPrice') + '\n';
    } else if (cakeType === 'customized') {
        text += 'Relleno: ' + data.get('filling') + '\n';
        text += 'Remojo: ' + data.get('soak') + '\n';
        text += 'Sabor de Torta: ' + data.get('flavor') + '\n';
-       text += 'Precio: ' + data.get('customPrice') + '\n';
+       text += 'Precio: $' + data.get('customPrice') + '\n';
    }
 
    var lines = text.split('\n');
@@ -198,7 +242,7 @@ function generateImage() {
    var img = canvas.toDataURL('image/png');
    var link = document.createElement('a');
    link.href = img;
-   link.download = 'pedido_pastel.png';
+   link.download = nombre + date +'.png';
    link.click();
 }
 
