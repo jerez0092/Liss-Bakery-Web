@@ -29,6 +29,12 @@
   <label for="currentDate">Fecha de registro:</label> 
   <input type="text" id="currentDate" name="currentDate" readonly>
   <p></p>
+  <label for="date">Selecciona la fecha de la entrega:</label>
+  <input type="date" id="date" name="date">
+  <p></p>
+  <label for="telefono">Numero de contacto:</label>
+  <input type="text" id="telefono" name="telefono" placeholder="Escribe el numero de contacto:">
+  <p></p>
   <label for="cakeType">Elige el tipo de pastel:</label>
   <select id="cakeType" name="cakeType">
     <option value="">Selecciona el tipo de pastel</option>
@@ -64,9 +70,6 @@
       <option value="dulce">Dulce</option>
       <option value="galleta">Galleta</option>
     </select>
-    <p></p>
-    <label for="date">Selecciona la fecha del pedido:</label>
-    <input type="date" id="date" name="date">
     <p></p>
     <label for="traditionalPrice">Selecciona el precio:</label>
     <select id="traditionalPrice" name="traditionalPrice">
@@ -126,9 +129,6 @@
     <label for="dedicationCustom">Dedicatoria:</label>
     <input type="text" id="dedicationCustom" name="dedicationCustom" placeholder="Escribe una dedicatoria">
     <p></p>
-    <label for="date">Selecciona la fecha del pedido:</label>
-    <input type="date" id="date" name="date">    
-    <p></p>
     <label for="customPrice"><p></p>Selecciona el precio:</label>
     <select id="customPrice" name="customPrice">
       <option value="0">Seleccione un precio Redondo</option>
@@ -153,6 +153,10 @@
   </div>
   
   <div><p></p></div>
+
+  <label for="quest">Observación:</label>
+  <input type="text" id="quest" name="quest" placeholder="si es necesario">
+  <p></p>
   
   <!-- Botón para capturar imagen -->
   <div id="captureImage" style="display:none;">
@@ -170,16 +174,17 @@
     </p>
   </div>
   
-
   <!-- Botón de envío -->
   <button type="button" onclick="location.href='//wa.me/+50363149600';">Agendar Pedido</button>
 
 </form>
 
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', (event) => { 
-  var currentDate = new Date().toISOString().split('T')[0]; 
-  document.getElementById('currentDate').value = currentDate; });
+document.addEventListener('DOMContentLoaded', (event) => {
+    var currentDate = new Date().toISOString().split('T')[0];
+    document.getElementById('currentDate').value = currentDate;
+});
+
 // JavaScript para mostrar/ocultar opciones según el tipo de pastel seleccionado
 document.getElementById('cakeType').addEventListener('change', function() {
    var cakeType = this.value;
@@ -191,8 +196,8 @@ document.getElementById('cakeType').addEventListener('change', function() {
 // Función para generar imagen con la información seleccionada
 function generateImage() {
    var canvas = document.createElement('canvas');
-   canvas.width = 600;
-   canvas.height = 600;
+   canvas.width = 800;
+   canvas.height = 900;
    var ctx = canvas.getContext('2d');
    ctx.fillStyle = 'white'; 
    ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -200,37 +205,47 @@ function generateImage() {
    var data = new FormData(form);
    var text = 'Liss Bakery\nRegistro de pedido:\n\n';
 
-   var currentDate = data.get('currentDate'); text += 'Fecha de Agendamiento: ' + currentDate + '\n';
+   var currentDate = data.get('currentDate'); 
+   text += 'Fecha de Registro: ' + currentDate + '\n\n';
 
    var cakeType = data.get('cakeType');
-   text += 'Tipo de Pastel: ' + (cakeType === 'traditional' ? 'Tradicional' : 'Personalizado') + '\n';
+   text += 'Tipo de Pastel: ' + (cakeType === 'traditional' ? 'Tradicional' : 'Personalizado') + '\n\n';
 
    var nombre = cakeType === 'traditional' ? data.get('nombreTraditional') : data.get('nombreCustom');
-   text += 'Nombre del cliente: ' + nombre + '\n';
+   text += 'Nombre del Cliente: ' + nombre + '\n\n';
 
    var dedication = cakeType === 'traditional' ? data.get('dedicationTraditional') : data.get('dedicationCustom');
-   text += 'Dedicatoria: ' + dedication + '\n';
+   text += 'Dedicatoria: ' + dedication + '\n\n';
 
-   var extra = cakeType === 'traditional' ? data.get('extraTraditional') : data.get('extraCustom');
-   text += 'Color de Pastel: ' + extra + '\n';
-
-   var style = data.get('style'); text += 'El color se aplicara:' + (style === 'borde' ? ' en el Decorado' : ' Completo') + '\n';
-
-   var cobertura = data.get('cobertura'); text += 'En el Borde: ' + cobertura + '\n';
-
-   var date = data.get('date'); text += 'Fecha del Pedido: ' + date + '\n';
+   var date = cakeType === 'traditional' ? data.get('date'): data.get('date');
+   text += 'Fecha de la entrega: ' + date + '\n\n';
 
    if (cakeType === 'traditional') {
+       var extra = data.get('extraTraditional');
+       text += 'Color de Pastel: ' + extra + '\n';
+
+       var style = data.get('style');
+       text += 'El color se aplicará:' + (style === 'borde' ? ' en el Decorado' : ' Completo') + '\n';
+
+       var cobertura = data.get('cobertura');
+       text += 'En el Borde: ' + cobertura + '\n';
+
        text += 'Relleno: Crema pastelera\n';
        text += 'Remojo: Tradicional de canela\n';
-       text += 'Sabor de Torta: Vainilla\n';
-       text += 'Precio: $' + data.get('traditionalPrice') + '\n';
+       text += 'Sabor de Torta: Vainilla\n\n';
+       text += 'Precio: $' + data.get('traditionalPrice') + '\n\n\n';
    } else if (cakeType === 'customized') {
        text += 'Relleno: ' + data.get('filling') + '\n';
        text += 'Remojo: ' + data.get('soak') + '\n';
-       text += 'Sabor de Torta: ' + data.get('flavor') + '\n';
-       text += 'Precio: $' + data.get('customPrice') + '\n';
+       text += 'Sabor de Torta: ' + data.get('flavor') + '\n\n';
+       text += 'Precio: $' + data.get('customPrice') + '\n\n';
    }
+
+   var contacto = data.get('telefono');
+   text += "Numero de contacto: " + contacto + '\n\n';
+
+   var quest = data.get('quest');
+   text += "Detalles: " + quest + '\n\n';
 
    var lines = text.split('\n');
    ctx.font = '25px Arial';
@@ -242,16 +257,14 @@ function generateImage() {
    var img = canvas.toDataURL('image/png');
    var link = document.createElement('a');
    link.href = img;
-   link.download = nombre + date +'.png';
+   link.download = nombre + '-' + date + '.png';
    link.click();
 }
 
 function redirectToThankYouPage(event) { 
-  event.preventDefault(); 
-  var form = document.getElementById('cakeForm'); 
-  window.location.href ="https://wa.me/+50363149600";
+    event.preventDefault(); 
+    window.location.href = "https://wa.me/+50363149600";
 }
-
 </script>
 
 
