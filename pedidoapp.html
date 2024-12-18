@@ -46,7 +46,15 @@
     <input type="text" id="dedicationTraditional" name="dedicationTraditional" placeholder="Escribe una dedicatoria">
     <p></p>
     <label for="extraTraditional">Fecha de entrega:</label>
-    <input type="text" id="extraTraditional" name="extraTraditional" placeholder="Fecha de entrega">
+    <input type="text" id="extraTraditional" name="extraTraditional" placeholder="Color del pastel">
+    <label for="style">Solo el Borde o todo el pastel:</label>
+    <select id="style" name="style">
+      <option value="borde">Borde</option>
+      <option value="completo">Completo</option>
+    </select>
+    <p></p>
+    <label for="date">Selecciona la fecha del pedido:</label>
+    <input type="date" id="date" name="date">
     <p></p>
     <label for="traditionalPrice">Selecciona el precio:</label>
     <select id="traditionalPrice" name="traditionalPrice">
@@ -94,8 +102,8 @@
     <label for="dedicationCustom">Dedicatoria:</label>
     <input type="text" id="dedicationCustom" name="dedicationCustom" placeholder="Escribe una dedicatoria">
     <p></p>
-    <label for="extraCustom">Fecha de entrega:</label>
-    <input type="text" id="extraCustom" name="extraCustom" placeholder="Fecha de entrega:">
+    <label for="date">Selecciona la fecha del pedido:</label>
+    <input type="date" id="date" name="date">    
     <p></p>
     <label for="customPrice"><p></p>Selecciona el precio:</label>
     <select id="customPrice" name="customPrice">
@@ -124,7 +132,7 @@
   </p></div>
 
   <!-- Botón de envío -->
-  <input type="submit" value="Agendar Pedido">
+  <button type="button" onclick="location.href='//wa.me/+50363149600';">Ir al Enlace</button>
 
 </form>
 
@@ -157,7 +165,11 @@ function generateImage() {
    text += 'Dedicatoria: ' + dedication + '\n';
 
    var extra = cakeType === 'traditional' ? data.get('extraTraditional') : data.get('extraCustom');
-   text += 'Fecha de entrega: ' + extra + '\n';
+   text += 'Color de Pastel: ' + extra + '\n';
+
+   var style = data.get('style'); text += 'El color se aplicara:' + (style === 'borde' ? ' Borde' : ' Completo') + '\n';
+
+   var date = data.get('date'); text += 'Fecha del Pedido: ' + date + '\n';
 
    if (cakeType === 'traditional') {
        text += 'Relleno: Crema pastelera\n';
@@ -183,6 +195,12 @@ function generateImage() {
    link.href = img;
    link.download = 'pedido_pastel.png';
    link.click();
+}
+
+function redirectToThankYouPage(event) { 
+  event.preventDefault(); 
+  var form = document.getElementById('cakeForm'); 
+  window.location.href ="https://wa.me/+50363149600";
 }
 
 </script>
