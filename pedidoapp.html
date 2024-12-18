@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Pedido de Pasteles - Liss's Bakery</title>
+</head>
+
+<style>
+    body {
+        background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+        margin: 10px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<body>
+
+<h1>¡Bienvenido a Liss Bakery!</h1>
+
+<form id="cakeForm" action="/submit-order" method="post">
+
+  <label for="cakeType">Elige el tipo de pastel:</label>
+  <select id="cakeType" name="cakeType">
+    <option value="">Selecciona el tipo de pastel</option>
+    <option value="traditional">Tradicional</option>
+    <option value="customized">Personalizado</option>
+  </select>
+
+  <!-- Opciones para pastel tradicional -->
+  <div id="traditionalOptions" style="display:none;">
+    <h3>Opciones para Pastel Tradicional</h3>
+    <label for="nombreTraditional">Nombre del cliente:</label>
+    <input type="text" id="nombreTraditional" name="nombreTraditional" placeholder="Nombre del cliente">
+    <p></p>
+    <p><strong>Relleno:</strong> Crema pastelera</p>
+    <p><strong>Remojo:</strong> Tradicional de canela</p>
+    <p><strong>Sabor de Torta:</strong> Vainilla</p>
+    <label for="dedicationTraditional">Dedicatoria:</label>
+    <input type="text" id="dedicationTraditional" name="dedicationTraditional" placeholder="Escribe una dedicatoria">
+    <p></p>
+    <label for="extraTraditional">Fecha de entrega:</label>
+    <input type="text" id="extraTraditional" name="extraTraditional" placeholder="Fecha de entrega">
+    <p></p>
+    <label for="traditionalPrice">Selecciona el precio:</label>
+    <select id="traditionalPrice" name="traditionalPrice">
+      <option value="5">1 a 3 porciones - $5.00</option>
+      <option value="8">4 a 6 porciones - $8.00</option>
+      <option value="11">8 a 10 porciones - $11.00</option>
+      <option value="15">12 a 15 porciones - $15.00</option>
+      <option value="20">20 a 25 porciones - $20.00</option>
+      <option value="consulta">30 a 100 porciones - Consultar en tienda</option>
+    </select>
+  </div>
+
+  <!-- Opciones para pastel personalizado -->
+  <div id="customOptions" style="display:none;">
+    <h3>Opciones para Pastel Personalizado</h3>
+    <label for="nombreCustom">Nombre del cliente:</label>
+    <input type="text" id="nombreCustom" name="nombreCustom" placeholder="Nombre del cliente:">
+    <p></p>
+    <label for="filling"><p></p>Elige el relleno:</label>
+    <select id="filling" name="filling">
+      <option value="crema_pastelera">Crema pastelera</option>
+      <option value="caramelo">Caramelo</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="crema_fresa">Crema de fresa</option>
+      <option value="crema_fresa_gomitas">Crema de fresa (con gomitas o marshmallow)</option>
+      <option value="crema_chocolate_gomitas">Crema de chocolate (con gomitas o marshmallow)</option>
+      <option value="crema_batida_caramelo">Crema batida con caramelo</option>
+      <option value="crema_cafe_mani">Crema de café (con maní o chispas de chocolate)</option>
+    </select>
+
+    <label for="soak"><p></p>Elige el remojo:</label>
+    <select id="soak" name="soak">
+      <option value="remojo_tradicional">tradicional de canela</option>
+      <option value="tres_leches">Tres leches (Costo extra según tamaño de pastel)</option>
+      <option value="cafe">Café</option>
+    </select>
+
+    <label for="flavor"><p></p>Elige el sabor de la torta:</label>
+    <select id="flavor" name="flavor">
+      <option value="vainilla">Vainilla</option>
+      <option value="chocolate">Chocolate</option>
+      <option value="marmoleado">Marmoleado</option>
+    </select>
+
+    <label for="dedicationCustom">Dedicatoria:</label>
+    <input type="text" id="dedicationCustom" name="dedicationCustom" placeholder="Escribe una dedicatoria">
+    <p></p>
+    <label for="extraCustom">Fecha de entrega:</label>
+    <input type="text" id="extraCustom" name="extraCustom" placeholder="Fecha de entrega:">
+    <p></p>
+    <label for="customPrice"><p></p>Selecciona el precio:</label>
+    <select id="customPrice" name="customPrice">
+      <option value="12">4 a 6 porciones - $12.00</option>
+      <option value="16.5">8 a 10 porciones - $16.50</option>
+      <option value="22">12 a 15 porciones - $22.00</option>
+      <option value="30">20 a 25 porciones - $30.00</option>
+      <option value="consulta_personalizado">30 a 100 porciones - Consultar en tienda</option>
+    </select>
+  </div>
+  
+  <div><p></p></div>
+  
+  <!-- Botón para capturar imagen -->
+  <div id="captureImage" style="display:none;">
+    <button type="button" onclick="generateImage()">Capturar Imagen</button>
+  </div>
+
+  <div><p></p></div>
+
+  <div><p>
+    Cuando termines de completar tu registro preciona capturar imagen para generar el archivo (generalmente se guardara en descarga)
+    <br>Una ves terminada la descarga preciona agendar pedido para comunicarte con un vendedor y a si confirmar tu pedido
+    <br>Este proceso ayudara a menatener un registro limpio sobre tu pedido, valido si el vendedor valida tu pedido.
+    <br>Si deseas información extra hasla saber al vendedor.
+  </p></div>
+
+  <!-- Botón de envío -->
+  <input type="submit" value="Agendar Pedido">
+
+</form>
+
+<script type="text/javascript">
+// JavaScript para mostrar/ocultar opciones según el tipo de pastel seleccionado
+document.getElementById('cakeType').addEventListener('change', function() {
+   var cakeType = this.value;
+   document.getElementById('traditionalOptions').style.display = cakeType == 'traditional' ? 'block' : 'none';
+   document.getElementById('customOptions').style.display = cakeType == 'customized' ? 'block' : 'none';
+   document.getElementById('captureImage').style.display = cakeType ? 'block' : 'none';
+});
+
+// Función para generar imagen con la información seleccionada
+function generateImage() {
+   var canvas = document.createElement('canvas');
+   canvas.width = 600;
+   canvas.height = 600;
+   var ctx = canvas.getContext('2d');
+   var form = document.getElementById('cakeForm');
+   var data = new FormData(form);
+   var text = 'Pedido de Pastel:\n\n';
+
+   var cakeType = data.get('cakeType');
+   text += 'Tipo de Pastel: ' + (cakeType === 'traditional' ? 'Tradicional' : 'Personalizado') + '\n';
+
+   var nombre = cakeType === 'traditional' ? data.get('nombreTraditional') : data.get('nombreCustom');
+   text += 'Nombre del cliente: ' + nombre + '\n';
+
+   var dedication = cakeType === 'traditional' ? data.get('dedicationTraditional') : data.get('dedicationCustom');
+   text += 'Dedicatoria: ' + dedication + '\n';
+
+   var extra = cakeType === 'traditional' ? data.get('extraTraditional') : data.get('extraCustom');
+   text += 'Fecha de entrega: ' + extra + '\n';
+
+   if (cakeType === 'traditional') {
+       text += 'Relleno: Crema pastelera\n';
+       text += 'Remojo: Tradicional de canela\n';
+       text += 'Sabor de Torta: Vainilla\n';
+       text += 'Precio: ' + data.get('traditionalPrice') + '\n';
+   } else if (cakeType === 'customized') {
+       text += 'Relleno: ' + data.get('filling') + '\n';
+       text += 'Remojo: ' + data.get('soak') + '\n';
+       text += 'Sabor de Torta: ' + data.get('flavor') + '\n';
+       text += 'Precio: ' + data.get('customPrice') + '\n';
+   }
+
+   var lines = text.split('\n');
+   ctx.font = '25px Arial';
+   ctx.fillStyle = 'black';
+   for (var i = 0; i < lines.length; i++) {
+       ctx.fillText(lines[i], 20, 70 + (i * 30));
+   }
+
+   var img = canvas.toDataURL('image/png');
+   var link = document.createElement('a');
+   link.href = img;
+   link.download = 'pedido_pastel.png';
+   link.click();
+}
+
+</script>
+
+
+</body>
+</html>
