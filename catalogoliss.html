@@ -93,10 +93,11 @@
             border-radius: 8px;
             margin: 5px;
         }
-        .description img:active { 
-            transform: scale(1.4); 
+        .description img.enlarge {
+            transform: scale(1.4);
             transition: transform 0.3s;
         }
+
     </style>
 </head>
 <body>
@@ -176,6 +177,10 @@
             var selectedDescription = document.getElementById(id);
             selectedDescription.style.display = 'block';
         }
+        // Agrandar imágenes al hacer clic y mantenerlas grandes 
+        document.querySelectorAll('.description img').forEach(img => { 
+            img.addEventListener('click', function() { 
+                this.classList.toggle('enlarge'); }); });
     </script>
 </body>
 </html>
