@@ -24,7 +24,7 @@
 
 <h1>Registro de Pedidos de Liss Bakery!</h1>
 
-<form id="cakeForm" action="/submit-order" method="post" name="cakeForm" netlify>
+<form id="cakeForm" action="/submit-order" method="post">
 
   <label for="currentDate">Fecha de registro:</label> 
   <input type="text" id="currentDate" name="currentDate" readonly>
@@ -185,7 +185,7 @@
   
   <!-- Botón para capturar imagen -->
   <div id="captureImage" style="display:none;">
-    <button type="submit" onclick="generateImage()">Capturar Imagen</button>
+    <button type="button" onclick="generateImage()">Capturar Imagen</button>
   </div>
 
   <div><p></p></div>
