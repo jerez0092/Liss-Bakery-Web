@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario Interactivo - Liss Bakery</title>
+    <link rel="icon" type="image/x-icon" href="lisslogo.ico">
+    <style>
+        :root {
+            --primary-color: #ADD8E6;
+            --secondary-color: #FFC0CB;
+            --tertiary-color: #9370DB;
+            --text-color: #000000;
+            --font-family: 'Roboto', sans-serif;
+            --header-font-size: 40px;
+            --slider-font-size: 30px;
+            --box-width: 300px;
+            --box-height: 400px;
+            --logo-animation-duration: 2s;
+        }
+
+        body {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+            color: var(--text-color);
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            font-size: var(--header-font-size);
+            margin: 20px 0;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        .box {
+            width: var(--box-width);
+            height: var(--box-height);
+            position: relative;
+            cursor: pointer;
+            margin: auto;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            animation: logoAnimation var(--logo-animation-duration) ease-in-out;
+        }
+
+        .slider, .slider1, .slider2 {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            text-align: center;
+            background: transparent;
+            transition: 1s ease-in-out;
+        }
+
+        .slider {
+            font-size: var(--slider-font-size);
+            color: white;
+            height: 5px;
+            padding: 10px 0;
+        }
+
+        .slider1 {
+            height: 0;
+            overflow: hidden;
+        }
+
+        .box:hover .slider {
+            height: 50px;
+        }
+
+        .box:hover .slider1 {
+            height: 20px;
+        }
+
+        .boxhover .slider2 {
+            height: 20px;
+        }
+
+        @keyframes logoAnimation {
+            0% {
+                transform: scale(2); /* Tamaño grande al principio */
+            }
+            100% {
+                transform: scale(1); /* Tamaño normal */
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .box {
+                width: 90%;
+                height: auto;
+            }
+
+            .slider {
+                font-size: 24px;
+            }
+
+            .slider1 {
+                font-size: 18px;
+            }
+        }
+
+        .calendar {
+            margin: 20px auto;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .calendar iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>Calendario</header>
+    <main>
+        <div class="calendar">
+            <iframe src="https://calendar.google.com/calendar/embed?src=your_google_calendar_id&ctz=America/El_Salvador"></iframe>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentYear = new Date().getFullYear();
+            if (currentYear !== 2024 && currentYear !== 2025) {
+                const calendarElement = document.querySelector('.calendar');
+                const message = document.createElement('p');
+                message.textContent = 'El calendario solo está disponible para los años 2024 y 2025.';
+                calendarElement.parentNode.replaceChild(message, calendarElement);
+            }
+        });
+    </script>
+</body>
+</html>
