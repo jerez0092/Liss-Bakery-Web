@@ -68,53 +68,8 @@
     <label for="detalles">Detalles:</label>
     <input type="text" id="detalles" name="detalles"><br><br>
 
-    <label for="fileInput">Subir imagen:</label>
-    <input type="file" id="fileInput" accept="image/*"><br><br>
-
     <button type="submit">Enviar Pedido</button>
 </form>
-
-<script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.1/dist/tesseract.min.js"></script>
-<script>
-    document.getElementById('fileInput').addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = () => {
-                const image = new Image();
-                image.src = reader.result;
-                image.onload = () => {
-                    Tesseract.recognize(
-                        image,
-                        'spa', // Elige el idioma adecuado
-                        {
-                            logger: (m) => console.log(m),
-                        }
-                    ).then(({ data: { text } }) => {
-                        // Aquí puedes usar el texto extraído para autocompletar el formulario
-                        console.log(text);
-                        // Ejemplo de cómo podrías usar el texto extraído (adaptar a tus necesidades):
-                        document.getElementById('nombre-cliente').value = extractNameFromText(text);
-                        document.getElementById('fecha-entrega').value = extractDateFromText(text);
-                        // Agrega más lógica para autocompletar otros campos
-                    });
-                };
-            };
-            reader.readAsDataURL(file);
-        }
-    });
-
-    function extractNameFromText(text) {
-        // Lógica personalizada para extraer el nombre del texto
-        return text.match(/nombre:\s*(\w+)/i)[1] || '';
-    }
-
-    function extractDateFromText(text) {
-        // Lógica personalizada para extraer la fecha del texto
-        const match = text.match(/\d{4}-\d{2}-\d{2}/);
-        return match ? match[0] : '';
-    }
-</script>
 
 </body>
 </html>
