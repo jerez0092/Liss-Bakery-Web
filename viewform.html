@@ -142,17 +142,19 @@
     function filterOrders(orders) {
         const filterName = document.getElementById('filter-name').value.toLowerCase();
         const filterDate = document.getElementById('filter-date').value;
+        const today = new Date().toISOString().split('T')[0];
 
         return orders.filter(order => {
             const nameMatch = order.data['nombre-cliente'].toLowerCase().includes(filterName);
-            const dateMatch = filterDate === '' || order.data['fecha-entrega'] === filterDate;
+            const dateMatch = filterDate === '' ? order.data['fecha-entrega'] === today : order.data['fecha-entrega'] === filterDate;
             return nameMatch && dateMatch;
         });
     }
 
     document.addEventListener('DOMContentLoaded', async () => {
         const orders = await fetchOrders();
-        displayOrders(orders);
+        const filteredOrders = filterOrders(orders);
+        displayOrders(filteredOrders);
 
         document.getElementById('filter-name').addEventListener('input', () => {
             const filteredOrders = filterOrders(orders);
