@@ -90,6 +90,7 @@
             <th>Precio</th>
             <th>Número de Contacto</th>
             <th>Detalles</th>
+            <th>Vendedora</th>
         </tr>
     </thead>
     <tbody id="orders-body">
@@ -134,6 +135,7 @@
                 <td data-label="Precio">${order.data['precio']}</td>
                 <td data-label="Número de Contacto">${order.data['contacto']}</td>
                 <td data-label="Detalles">${order.data['detalles']}</td>
+                <td data-label="Vendedor">${order.data['vendedor']}</td>
             `;
             ordersBody.appendChild(row);
         });
