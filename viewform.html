@@ -17,17 +17,17 @@
             justify-content: center;
         }
         table {
-            width: 80%;
+            width: 100%;
             margin: 20px 0;
             border-collapse: collapse;
         }
         th, td {
             border: 1px solid #ddd;
             padding: 8px;
+            text-align: center;
         }
         th {
             background-color: #f2f2f2;
-            text-align: center;
         }
         .filter-input {
             margin: 10px;
@@ -35,6 +35,17 @@
             width: 250px;
             border: 1px solid #ddd;
             border-radius: 5px;
+        }
+        @media screen and (max-width: 600px) {
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            th, td {
+                display: block;
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -144,4 +155,3 @@
 
 </body>
 </html>
-
