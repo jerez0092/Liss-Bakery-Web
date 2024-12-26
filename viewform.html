@@ -136,35 +136,8 @@
                 <td data-label="Número de Contacto">${order.data['contacto']}</td>
                 <td data-label="Detalles">${order.data['detalles']}</td>
                 <td data-label="Vendedor">${order.data['vendedor']}</td>
-                <td data-label="Listo">
-                    <input type="checkbox" class="ready-checkbox" data-id="${order.id}">
-                </td>
-                <td data-label="Entregado">
-                    <input type="checkbox" class="delivered-checkbox" data-id="${order.id}">
-                </td>
             `;
             ordersBody.appendChild(row);
-        });
-
-        // Add event listeners for the checkboxes
-        document.querySelectorAll('.ready-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', (event) => {
-                // Handle "Listo" checkbox change
-                const orderId = event.target.getAttribute('data-id');
-                const isChecked = event.target.checked;
-                // Update the status in your system or perform any necessary action
-                console.log(`Order ID: ${orderId}, Listo: ${isChecked}`);
-            });
-        });
-
-        document.querySelectorAll('.delivered-checkbox').forEach(checkbox => {
-            checkbox.addEventListener('change', (event) => {
-                // Handle "Entregado" checkbox change
-                const orderId = event.target.getAttribute('data-id');
-                const isChecked = event.target.checked;
-                // Update the status in your system or perform any necessary action
-                console.log(`Order ID: ${orderId}, Entregado: ${isChecked}`);
-            });
         });
     }
 
@@ -196,7 +169,6 @@
         });
     });
 </script>
-
 
 </body>
 </html>
