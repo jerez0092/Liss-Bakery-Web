@@ -124,6 +124,10 @@
             height: 600px;
             border: none;
         }
+        nav { margin-left: auto; } 
+        nav ul { display: flex; list-style-type: none; margin: 0; padding: 0; } 
+        nav ul li { margin: 0 5px; } 
+        nav ul li a { color: white; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -133,6 +137,19 @@
             <iframe src="https://calendar.google.com/calendar/embed?src=your_google_calendar_id&ctz=America/El_Salvador"></iframe>
         </div>
     </main>
+    <div>
+        <nav> 
+            <ul> 
+                <li>
+                    <a href="index.html">Inicio --</a>
+                </li> 
+                <li><a href="pedidoapp.html">Agendar --</a>
+                </li> 
+                <li><a href="politicas.html">información</a>
+                </li> 
+            </ul> 
+        </nav>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const currentYear = new Date().getFullYear();
