@@ -3,42 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos del Formulario</title>
+    <title>Lista de Pedidos - Liss's Bakery</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 10px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        table {
+            width: 80%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .filter-input {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Envíos del Formulario</h1>
-    <div id="form-submissions">
-        <!-- Los datos del formulario se mostrarán aquí -->
-    </div>
 
-    <script>
-        async function fetchFormSubmissions() {
-            const token = 'nfp_oWSZfLcAw2G6ZnDYoUUyM12fnG2RG1v230f2';  // Reemplaza con tu token de acceso
-            const formId = '676d7f8b3692570008e8beb0'; // Reemplaza con el ID de tu formulario
+<h1>Lista de Pedidos de Liss Bakery</h1>
 
-            const response = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+<label for="filter-name">Filtrar por Nombre:</label>
+<input type="text" id="filter-name" class="filter-input" placeholder="Ingrese el nombre del cliente">
 
-            const submissions = await response.json();
-            const submissionsContainer = document.getElementById('form-submissions');
-            submissionsContainer.innerHTML = '';
+<label for="filter-date">Filtrar por Fecha de Entrega:</label>
+<input type="date" id="filter-date" class="filter-input">
 
-            submissions.forEach(submission => {
-                const submissionElement = document.createElement('div');
-                submissionElement.innerHTML = `
-                    <p><strong>Nombre:</strong> ${submission.data.name}</p>
-                    <p><strong>Correo electrónico:</strong> ${submission.data.email}</p>
-                    <p><strong>Mensaje:</strong> ${submission.data.message}</p>
-                    <hr>
-                `;
-                submissionsContainer.appendChild(submissionElement);
-            });
-        }
+<table id="orders-table">
+    <thead>
+        <tr>
+            <th>Fecha de Registro</th>
+            <th>Sucursal</th>
+            <th>Tipo de Pastel</th>
+            <th>Nombre del Cliente</th>
+            <th>Dedicatoria</th>
+            <th>Fecha de Entrega</th>
+            <th>Color de Pastel</th>
+            <th>Color Aplicación</th>
+            <th>Borde</th>
+            <th>Relleno</th>
+            <th>Remojo</th>
+            <th>Sabor de Torta</th>
+            <th>Precio</th>
+            <th>Número de Contacto</th>
+            <th>Detalles</th>
+        </tr>
+    </thead>
+    <tbody id="orders-body">
+        <!-- Las filas de pedidos se cargarán aquí -->
+    </tbody>
+</table>
 
-        document.addEventListener('DOMContentLoaded', fetchFormSubmissions);
-    </script>
+<script>
+    async function fetchOrders() {
+        const token = 'nfp_oWSZfLcAw2G6ZnDYoUUyM12fnG2RG1v230f2';  // Reemplaza con tu token de acceso
+        const formId = '676d8ffa75a7050008f79761'; // Reemplaza con el ID de tu formulario
+
+        const response = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        const submissions = await response.json();
+        return submissions;
+    }
+
+    function displayOrders(orders) {
+        const ordersBody = document.getElementById('orders-body');
+        ordersBody.innerHTML = '';
+
+        orders.forEach(order => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.data['fecha-registro']}</td>
+                <td>${order.data['sucursal']}</td>
+                <td>${order.data['tipo-pastel']}</td>
+                <td>${order.data['nombre-cliente']}</td>
+                <td>${order.data['dedicatoria']}</td>
+                <td>${order.data['fecha-entrega']}</td>
+                <td>${order.data['color-pastel']}</td>
+                <td>${order.data['color-aplicacion']}</td>
+                <td>${order.data['borde']}</td>
+                <td>${order.data['relleno']}</td>
+                <td>${order.data['remojo']}</td>
+                <td>${order.data['sabor-torta']}</td>
+                <td>${order.data['precio']}</td>
+                <td>${order.data['contacto']}</td>
+                <td>${order.data['detalles']}</td>
+            `;
+            ordersBody.appendChild(row);
+        });
+    }
+
+    function filterOrders(orders) {
+        const filterName = document.getElementById('filter-name').value.toLowerCase();
+        const filterDate = document.getElementById('filter-date').value;
+
+        return orders.filter(order => {
+            const nameMatch = order.data['nombre-cliente'].toLowerCase().includes(filterName);
+            const dateMatch = filterDate === '' || order.data['fecha-entrega'] === filterDate;
+            return nameMatch && dateMatch;
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        const orders = await fetchOrders();
+        displayOrders(orders);
+
+        document.getElementById('filter-name').addEventListener('input', () => {
+            const filteredOrders = filterOrders(orders);
+            displayOrders(filteredOrders);
+        });
+
+        document.getElementById('filter-date').addEventListener('change', () => {
+            const filteredOrders = filterOrders(orders);
+            displayOrders(filteredOrders);
+        });
+    });
+</script>
+
 </body>
 </html>
+

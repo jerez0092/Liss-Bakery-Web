@@ -3,22 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Contacto</title>
+    <title>Formulario de Pedido de Pastel - Liss's Bakery</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 10px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Contáctanos</h1>
-    <form name="contact" netlify>
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
-        <br>
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required>
-        <br>
-        <label for="message">Mensaje:</label>
-        <textarea id="message" name="message" required></textarea>
-        <br>
-        <button type="submit">Enviar</button>
-    </form>
+
+<h1>Registro de Pedidos de Liss Bakery!</h1>
+
+<form name="pedido" method="POST" data-netlify="true">
+    <label for="fecha-registro">Fecha de Registro:</label> 
+    <input type="date" id="fecha-registro" name="fecha-registro" required><br><br>
+
+    <label for="sucursal">Sucursal:</label>
+    <input type="text" id="sucursal" name="sucursal" required><br><br>
+
+    <label for="tipo-pastel">Tipo de Pastel:</label>
+    <input type="text" id="tipo-pastel" name="tipo-pastel" required><br><br>
+
+    <label for="nombre-cliente">Nombre del Cliente:</label>
+    <input type="text" id="nombre-cliente" name="nombre-cliente" required><br><br>
+
+    <label for="dedicatoria">Dedicatoria:</label>
+    <input type="text" id="dedicatoria" name="dedicatoria" required><br><br>
+
+    <label for="fecha-entrega">Fecha de la entrega:</label>
+    <input type="date" id="fecha-entrega" name="fecha-entrega" required><br><br>
+
+    <label for="color-pastel">Color de Pastel:</label>
+    <input type="text" id="color-pastel" name="color-pastel" required><br><br>
+
+    <label for="color-aplicacion">El color se aplicará:</label>
+    <input type="text" id="color-aplicacion" name="color-aplicacion" required><br><br>
+
+    <label for="borde">En el Borde:</label>
+    <input type="text" id="borde" name="borde" required><br><br>
+
+    <label for="relleno">Relleno:</label>
+    <input type="text" id="relleno" name="relleno" required><br><br>
+
+    <label for="remojo">Remojo:</label>
+    <input type="text" id="remojo" name="remojo" required><br><br>
+
+    <label for="sabor-torta">Sabor de Torta:</label>
+    <input type="text" id="sabor-torta" name="sabor-torta" required><br><br>
+
+    <label for="precio">Precio:</label>
+    <input type="text" id="precio" name="precio" required><br><br>
+
+    <label for="contacto">Número de contacto:</label>
+    <input type="text" id="contacto" name="contacto" required><br><br>
+
+    <label for="detalles">Detalles:</label>
+    <input type="text" id="detalles" name="detalles"><br><br>
+
+    <button type="submit">Enviar Pedido</button>
+</form>
+
 </body>
 </html>
-
