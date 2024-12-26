@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del Formulario</title>
+</head>
+<body>
+    <h1>Envíos del Formulario</h1>
+    <div id="form-submissions">
+        <!-- Los datos del formulario se mostrarán aquí -->
+    </div>
+
+    <script>
+        async function fetchFormSubmissions() {
+            const token = 'nfp_oWSZfLcAw2G6ZnDYoUUyM12fnG2RG1v230f2';  // Reemplaza con tu token de acceso
+            const formId = 'contact'; // Reemplaza con el ID de tu formulario
+
+            const response = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const submissions = await response.json();
+            const submissionsContainer = document.getElementById('form-submissions');
+            submissionsContainer.innerHTML = '';
+
+            submissions.forEach(submission => {
+                const submissionElement = document.createElement('div');
+                submissionElement.innerHTML = `
+                    <p><strong>Nombre:</strong> ${submission.data.name}</p>
+                    <p><strong>Correo electrónico:</strong> ${submission.data.email}</p>
+                    <p><strong>Mensaje:</strong> ${submission.data.message}</p>
+                    <hr>
+                `;
+                submissionsContainer.appendChild(submissionElement);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchFormSubmissions);
+    </script>
+</body>
+</html>
