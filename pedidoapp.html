@@ -18,6 +18,10 @@
         align-items: center;
         justify-content: center;
     }
+    nav { margin-left: auto; } 
+        nav ul { display: flex; list-style-type: none; margin: 0; padding: 0; } 
+        nav ul li { margin: 0 5px; } 
+        nav ul li a { color: white; text-decoration: none; }
 </style>
 
 <body>
@@ -194,6 +198,22 @@
   <button type="button" onclick="location.href='//wa.me/+50363149600';">Agendar Pedido</button>
 
 </form>
+
+<div>
+  <nav> 
+      <ul> 
+          <li>
+              <a href="index.html">Inicio</a>
+          </li> 
+          <li><a href="form.html">Registrar pedidos</a>
+          </li> 
+          <li><a href="viewform.html">Ver lista de pedidos</a>
+          </li> 
+          <li><a href="tableprice.html">tabla de precios</a>
+          </li> 
+      </ul> 
+  </nav>
+</div>
 
 <script type="text/javascript">
 document.addEventListener('DOMContentLoaded', (event) => {
