@@ -70,6 +70,18 @@
 
 <h1>Lista de Pedidos de Liss Bakery</h1>
 
+<div>
+    <nav> 
+        <ul> 
+            <li>
+                <a href="index.html">Inicio --</a>
+            </li> 
+            <li><a href="form.html">Registrar Pedidos</a>
+            </li> 
+        </ul> 
+    </nav>
+</div>
+
 <label for="filter-name">Filtrar por Nombre:</label>
 <input type="text" id="filter-name" class="filter-input" placeholder="Ingrese el nombre del cliente">
 
@@ -101,22 +113,6 @@
         <!-- Las filas de pedidos se cargarán aquí -->
     </tbody>
 </table>
-
-<div><p></p></div>
-<div><p></p></div>
-<div><p></p></div>
-
-<div>
-  <nav> 
-      <ul> 
-          <li>
-              <a href="index.html">Inicio --</a>
-          </li> 
-          <li><a href="form.html">Registrar Pedidos</a>
-          </li> 
-      </ul> 
-  </nav>
-</div>
 
 <script>
     async function fetchOrders() {
