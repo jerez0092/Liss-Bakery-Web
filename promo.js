@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const promoImage = document.createElement('img');
     promoImage.src = 'catalogo/promos/promo 1.jpeg'; // Reemplaza con la ruta de tu imagen
     promoImage.alt = 'Haz tu pedido para la rosca de rey del primero de enero al 4 de enero';
-    promoImage.style.maxWidth = '70%';
-    promoImage.style.maxHeight = '70%';
+    promoImage.style.maxWidth = '50%';
+    promoImage.style.maxHeight = '50%';
     promoImage.style.cursor = 'pointer';
     
     // Crear el texto promocional
