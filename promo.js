@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     promoContainer.style.height = '100%';
     promoContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
     promoContainer.style.display = 'flex';
+    promoContainer.style.flexDirection = 'column';
     promoContainer.style.justifyContent = 'center';
     promoContainer.style.alignItems = 'center';
     promoContainer.style.zIndex = '1000';
@@ -16,21 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const promoImage = document.createElement('img');
     promoImage.src = 'catalogo/promos/promo 1.jpeg'; // Reemplaza con la ruta de tu imagen
     promoImage.alt = 'Haz tu pedido para la rosca de rey del primero de enero al 4 de enero';
-    promoImage.style.maxWidth = '90%';
-    promoImage.style.maxHeight = '90%';
+    promoImage.style.maxWidth = '70%';
+    promoImage.style.maxHeight = '70%';
     promoImage.style.cursor = 'pointer';
+    
+    // Crear el texto promocional
+    const promoText = document.createElement('div');
+    promoText.innerHTML = 'Haz tu pedido para la rosca de rey del primero de enero al 4 de enero. <a href="https://wa.me/+50363149600" style="color: yellow; text-decoration: underline;">Contáctanos aquí</a>';
+    promoText.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    promoText.style.color = 'white';
+    promoText.style.padding = '10px';
+    promoText.style.marginTop = '20px';
+    promoText.style.borderRadius = '8px';
+    promoText.style.fontSize = '18px';
+    promoText.style.textAlign = 'center';
     
     // Añadir un evento de clic para cambiar la imagen o eliminar el contenedor
     promoImage.addEventListener('click', () => {
-        if (promoImage.src.includes('catalogo/promos/promo 2.jpeg')) {
-            promoImage.src = 'tu-imagen-promocional2.png'; // Reemplaza con la ruta de la segunda imagen
+        const filename = promoImage.src.split('/').pop();
+        if (filename === 'promo 1.jpeg') {
+            promoImage.src = 'catalogo/promos/promo 2.jpeg'; // Reemplaza con la ruta de la segunda imagen
         } else {
             document.body.removeChild(promoContainer);
         }
     });
 
-    // Añadir la imagen al contenedor
+    // Añadir la imagen y el texto al contenedor
     promoContainer.appendChild(promoImage);
+    promoContainer.appendChild(promoText);
 
     // Añadir el contenedor al cuerpo del documento
     document.body.appendChild(promoContainer);
