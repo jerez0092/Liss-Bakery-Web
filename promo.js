@@ -16,14 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Crear la imagen promocional
     const promoImage = document.createElement('img');
     promoImage.src = 'catalogo/promos/promo 1.jpeg'; // Reemplaza con la ruta de tu imagen
-    promoImage.alt = 'Haz tu pedido para la rosca de rey del primero de enero al 4 de enero';
+    promoImage.alt = 'Haz tu pedido para la rosca de rey del 4 al 6 de enero';
     promoImage.style.maxWidth = '50%';
     promoImage.style.maxHeight = '50%';
     promoImage.style.cursor = 'pointer';
     
     // Crear el texto promocional
     const promoText = document.createElement('div');
-    promoText.innerHTML = 'Haz tu pedido para la rosca de rey del primero de enero al 4 de enero. <a href="https://wa.me/+50363149600" style="color: yellow; text-decoration: underline;">Contáctanos aquí</a>';
+    promoText.innerHTML = 'Haz tu pedido para la rosca de rey del 4 al 6 de enero. <a href="https://wa.me/+50363149600" style="color: yellow; text-decoration: underline;">Contáctanos aquí</a>';
     promoText.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     promoText.style.color = 'white';
     promoText.style.padding = '10px';
