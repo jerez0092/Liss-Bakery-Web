@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Crear el texto promocional
     const promoText = document.createElement('div');
-    promoText.innerHTML = 'Haz tu pedido para la rosca de rey del 4 al 6 de enero. <a href="https://wa.me/+50363149600" style="color: yellow; text-decoration: underline;">Contáctanos aquí</a>';
+    promoText.innerHTML = 'Haz tu pedido para la rosca de reyes del 4 al 6 de enero. <a href="https://wa.me/+50363149600" style="color: yellow; text-decoration: underline;">Contáctanos aquí</a>';
     promoText.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     promoText.style.color = 'white';
     promoText.style.padding = '10px';
