@@ -15,21 +15,19 @@
         }
         .slider-inner {
             display: flex;
-            transition: transform 0.5s ease-in-out;
         }
         .slide {
-            flex: 0 0 80%; /* Cambia el ancho de la diapositiva para mostrar parcialmente la siguiente */
-            margin: 0 10%; /* Ajusta el margen para centrar la diapositiva y dejar espacio para las laterales */
-            box-sizing: border-box;
+            min-width: 100%;
+            transition: transform 0.5s ease-in-out;
         }
         .slide img {
-            width: 100%;
+            width: 50%;
             display: block;
         }
         .carousel-controls {
             position: absolute;
             top: 50%;
-            width: 100%;
+            width: 50%;
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
@@ -46,13 +44,16 @@
     <div class="slider">
         <div class="slider-inner">
             <div class="slide">
-                <img src="catalogo/tematicos/personalizado 1.jpeg" alt="Producto 1">
+                <img src="catalogo/tematicos/personalizado 2.jpeg" alt="Producto 1">
             </div>
             <div class="slide">
-                <img src="catalogo/tematicos/personalizado 2.jpeg" alt="Producto 2">
+                <img src="catalogo/tematicos/personalizado 1.jpeg" alt="Producto 2">
             </div>
             <div class="slide">
                 <img src="catalogo/tematicos/personalizado 3.jpeg" alt="Producto 2">
+            </div>
+            <div class="slide">
+                <img src="catalogo/tematicos/personalizado 4.jpeg" alt="Producto 2">
             </div>
             <!-- Puedes agregar más slides aquí -->
         </div>
@@ -62,9 +63,11 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script>
-        // JavaScript para el slider
+        // JavaScript y GSAP para el slider
         const sliderInner = document.querySelector('.slider-inner');
+        const slides = document.querySelectorAll('.slide');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
 
@@ -72,7 +75,7 @@
 
         function showSlide(index) {
             const slideWidth = document.querySelector('.slide').offsetWidth;
-            sliderInner.style.transform = `translateX(-${index * (slideWidth + 20)}px)`; // Ajusta el espacio total incluyendo margen
+            gsap.to(sliderInner, { x: -index * slideWidth, duration: 1 });
         }
 
         prevButton.addEventListener('click', () => {
@@ -83,7 +86,7 @@
         });
 
         nextButton.addEventListener('click', () => {
-            if (currentIndex < sliderInner.children.length - 1) {
+            if (currentIndex < slides.length - 1) {
                 currentIndex++;
                 showSlide(currentIndex);
             }
