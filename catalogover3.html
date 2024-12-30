@@ -19,7 +19,7 @@
         /* Estilos CSS */
         .slider {
             position: relative;
-            width: 100%;
+            width: 75%;
             max-width: 75rem;
             margin: auto;
             overflow: hidden;
@@ -29,12 +29,25 @@
             transition: transform 0.5s ease-in-out;
         }
         .slide {
-            min-width: 100%;
+            min-width: 75%;
             transition: transform 0.5s ease-in-out;
         }
         .slide img {
-            width: 50%;
+            width: 75%;
             display: block;
+        }
+        @media screen and (max-width: 600px) {
+            slider {
+                position: relative;
+                width: 100%;
+                max-width: 75rem;
+                margin: auto;
+                overflow: hidden;
+            }
+            .slider img {
+                width: 100%;
+                display: block;
+            }
         }
     </style>
 </head>
