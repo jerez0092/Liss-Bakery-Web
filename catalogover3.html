@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo LISS BAKERY</title>
+    <style>
+        /* Estilos CSS */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 75rem;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slider-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 80%; /* Cambia el ancho de la diapositiva para mostrar parcialmente la siguiente */
+            margin: 0 10%; /* Ajusta el margen para centrar la diapositiva y dejar espacio para las laterales */
+            box-sizing: border-box;
+        }
+        .slide img {
+            width: 100%;
+            display: block;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-controls button {
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            padding: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slider-inner">
+            <div class="slide">
+                <img src="catalogo/tematicos/personalizado 1.jpeg" alt="Producto 1">
+            </div>
+            <div class="slide">
+                <img src="catalogo/tematicos/personalizado 2.jpeg" alt="Producto 2">
+            </div>
+            <div class="slide">
+                <img src="catalogo/tematicos/personalizado 3.jpeg" alt="Producto 2">
+            </div>
+            <!-- Puedes agregar más slides aquí -->
+        </div>
+        <div class="carousel-controls">
+            <button id="prev">Anterior</button>
+            <button id="next">Siguiente</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para el slider
+        const sliderInner = document.querySelector('.slider-inner');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slideWidth = document.querySelector('.slide').offsetWidth;
+            sliderInner.style.transform = `translateX(-${index * (slideWidth + 20)}px)`; // Ajusta el espacio total incluyendo margen
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSlide(currentIndex);
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < sliderInner.children.length - 1) {
+                currentIndex++;
+                showSlide(currentIndex);
+            }
+        });
+
+        // Ajustar el tamaño del slider al cambiar el tamaño de la ventana
+        window.addEventListener('resize', () => {
+            showSlide(currentIndex);
+        });
+    </script>
+</body>
+</html>
