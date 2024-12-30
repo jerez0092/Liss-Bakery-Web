@@ -16,6 +16,21 @@
             align-items: center;
             justify-content: center;
         }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0; /* Añade margen para separación */
+        }
         /* Estilos CSS */
         .slider {
             position: relative;
@@ -37,7 +52,7 @@
             display: block;
         }
         @media screen and (max-width: 600px) {
-            slider {
+            .slider {
                 position: relative;
                 width: 100%;
                 max-width: 75rem;
@@ -52,6 +67,16 @@
     </style>
 </head>
 <body>
+    <header>
+        <a href="index.html">
+            <img src="lisslogo.png" alt="Logo de LISS BAKERY">
+        </a>
+    <h1>Evento fin de Año 2024 <br>LISS BAKERY</h1>
+    </header>
+
+    <h2>Gracias a Dios podemos decir que llegamos hasta aqui.</h2>
+
+    <p>El 5 de mayo de 2021, LISS BAKERY abria sus puertas</p>
     <div class="slider">
         <div class="slider-inner">
             <div class="slide">
