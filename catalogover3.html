@@ -81,7 +81,7 @@
     <h2>Gracias a Dios podemos decir que llegamos hasta aqui.</h2>
 
     <p>El 5 de mayo de 2021, LISS BAKERY abria sus puertas</p>
-    <div class="slider">
+    <div class="slider" id="slider1">
         <div class="slider-inner">
             <div class="slide">
                 <img src="fin de año/1.jpg" alt="Producto 1">
@@ -95,87 +95,91 @@
             <div class="slide">
                 <img src="fin de año/5.jpg" alt="Producto 2">
             </div>
-            <!-- Puedes agregar más slides aquí -->
-        </div>    
-        <h2>Ha sido un reto llegar a Diciembre 2024 pero nuestro equipo ha superado muchas adversidades</h2>
-        <p>La Familia LISS BAKERY no solo consta de empleados, hay más personas involucradas que nos ayudan a crecer</p>
-            <div class="slider-inner">
-                <div class="slide">
-                    <img src="fin de año/6.jpg" alt="Producto 1">
-                </div>
-                <div class="slide">
-                    <img src="fin de año/7.jpg" alt="Producto 2">
-                </div>
-                <div class="slide">
-                    <img src="fin de año/8.jpg" alt="Producto 2">
-                </div>
-                <!-- Puedes agregar más slides aquí -->
-            </div>
-
+        </div>
     </div>
 
+    <h2>Ha sido un reto llegar a Diciembre 2024 pero nuestro equipo ha superado muchas adversidades</h2>
+    <p>La Familia LISS BAKERY no solo consta de empleados, hay más personas involucradas que nos ayudan a crecer</p>
+    <div class="slider" id="slider2">
+        <div class="slider-inner">
+            <div class="slide">
+                <img src="fin de año/6.jpg" alt="Producto 1">
+            </div>
+            <div class="slide">
+                <img src="fin de año/7.jpg" alt="Producto 2">
+            </div>
+            <div class="slide">
+                <img src="fin de año/8.jpg" alt="Producto 2">
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script>
-        // JavaScript y GSAP para el slider
-        const sliderInner = document.querySelector('.slider-inner');
-        const slides = document.querySelectorAll('.slide');
-        let currentIndex = 0;
-        let startX = 0;
-        let isDragging = false;
+        // JavaScript y GSAP para el primer slider
+        function initializeSlider(sliderId) {
+            const sliderInner = document.querySelector(`#${sliderId} .slider-inner`);
+            const slides = document.querySelectorAll(`#${sliderId} .slide`);
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
 
-        function showSlide(index) {
-            const slideWidth = document.querySelector('.slide').offsetWidth;
-            gsap.to(sliderInner, { x: -index * slideWidth, duration: 1 });
+            function showSlide(index) {
+                const slideWidth = document.querySelector(`#${sliderId} .slide`).offsetWidth;
+                gsap.to(sliderInner, { x: -index * slideWidth, duration: 1 });
+            }
+
+            sliderInner.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                isDragging = true;
+            });
+
+            sliderInner.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+
+            sliderInner.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const currentX = e.clientX;
+                const diff = startX - currentX;
+                if (diff > 50) {
+                    if (currentIndex < slides.length - 1) currentIndex++;
+                    showSlide(currentIndex);
+                    isDragging = false;
+                } else if (diff < -50) {
+                    if (currentIndex > 0) currentIndex--;
+                    showSlide(currentIndex);
+                    isDragging = false;
+                }
+            });
+
+            sliderInner.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const currentX = e.touches[0].clientX;
+                const diff = startX - currentX;
+                if (diff > 50) {
+                    if (currentIndex < slides.length - 1) currentIndex++;
+                    showSlide(currentIndex);
+                    isDragging = false;
+                } else if (diff < -50) {
+                    if (currentIndex > 0) currentIndex--;
+                    showSlide(currentIndex);
+                    isDragging = false;
+                }
+            });
+
+            sliderInner.addEventListener('mouseup', () => isDragging = false);
+            sliderInner.addEventListener('touchend', () => isDragging = false);
+
+            // Ajustar el tamaño del slider al cambiar el tamaño de la ventana
+            window.addEventListener('resize', () => {
+                showSlide(currentIndex);
+            });
         }
 
-        sliderInner.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-        });
-
-        sliderInner.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-
-        sliderInner.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const currentX = e.clientX;
-            const diff = startX - currentX;
-            if (diff > 50) {
-                if (currentIndex < slides.length - 1) currentIndex++;
-                showSlide(currentIndex);
-                isDragging = false;
-            } else if (diff < -50) {
-                if (currentIndex > 0) currentIndex--;
-                showSlide(currentIndex);
-                isDragging = false;
-            }
-        });
-
-        sliderInner.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            const currentX = e.touches[0].clientX;
-            const diff = startX - currentX;
-            if (diff > 50) {
-                if (currentIndex < slides.length - 1) currentIndex++;
-                showSlide(currentIndex);
-                isDragging = false;
-            } else if (diff < -50) {
-                if (currentIndex > 0) currentIndex--;
-                showSlide(currentIndex);
-                isDragging = false;
-            }
-        });
-
-        sliderInner.addEventListener('mouseup', () => isDragging = false);
-        sliderInner.addEventListener('touchend', () => isDragging = false);
-
-        // Ajustar el tamaño del slider al cambiar el tamaño de la ventana
-        window.addEventListener('resize', () => {
-            showSlide(currentIndex);
-        });
+        initializeSlider('slider1');
+        initializeSlider('slider2');
     </script>
 </body>
 </html>
