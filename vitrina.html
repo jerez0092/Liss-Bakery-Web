@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepcion Liss Bakery</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ADD8E6, #FFC0CB, #9370DB);
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            margin: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        header img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0; /* Añade margen para separación */
+        }
+        p {
+            text-align: center;
+        }
+        .category-button {
+            background-color: #fff;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .category {
+            display: none; /* Asegúrate de que todas las categorías estén ocultas al cargar la página */
+            margin-top: 20px;
+        }
+        .category-flex {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .category img {
+            width: 15%;
+            height: auto;
+            margin: 10px;
+            align-items: center;
+        }
+        @media screen and (max-width: 600px) {
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="lisslogo.png" alt="Logo de LISS BAKERY">
+        </a>
+    <h1>Recepción Liss Bakery</h1>
+    </header>
+
+    <div>
+        <button class="category-button" data-category="postres">Postres</button>
+        <button class="category-button" data-category="pasteles">Pasteles</button>
+        <button class="category-button" data-category="temporada">De Temporada</button>
+    </div>
+
+    <div id="postres" class="category">
+        <div class="category-flex">
+        <img src="catalogo/promos/cupcake.jpeg" alt="Postre 1">
+        <img src="catalogo/promos/galletas.jpeg" alt="Postre 2">
+        <img src="catalogo/promos/adornos.jpeg" alt="Postre 3">
+        </div>
+    </div>
+
+    <div id="pasteles" class="category">
+        <div class="category-flex">
+        <img src="catalogo/basicos/tradicional 3.jpeg" alt="Pastel 1">
+        <img src="catalogo/cumpleaños/cumpleaños 4.jpeg" alt="Pastel 2">
+        <img src="catalogo/tematicos/personalizado 3.jpeg" alt="Pastel 3">
+    </div>
+    </div>
+
+    <div id="temporada" class="category">
+        <div class="category-flex">
+        <img src="catalogo/promos/promo 1.jpeg" alt="De Temporada 1">
+        <img src="catalogo/promos/promo 2.jpeg" alt="De Temporada 2">
+        <img src="catalogo/navideños2024/51.jpg" alt="De Temporada 3">
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.category-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                const categoryDiv = document.getElementById(category);
+
+                // Ocultar todas las categorías
+                document.querySelectorAll('.category').forEach(div => {
+                    if (div !== categoryDiv) {
+                        div.style.display = 'none';
+                    }
+                });
+
+                // Toggle the display of the selected category images
+                if (categoryDiv.style.display === 'none' || !categoryDiv.style.display) {
+                    categoryDiv.style.display = 'flex';
+                } else {
+                    categoryDiv.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
