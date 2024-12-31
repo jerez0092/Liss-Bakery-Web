@@ -31,6 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
     promoText.style.borderRadius = '8px';
     promoText.style.fontSize = '18px';
     promoText.style.textAlign = 'center';
+
+    const promoText2 = document.createElement('div');
+    promoText2.innerHTML = 'Toca la imagen para cerrar';
+    promoText2.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    promoText2.style.color = 'white';
+    promoText2.style.padding = '10px';
+    promoText2.style.marginTop = '20px';
+    promoText2.style.borderRadius = '8px';
+    promoText2.style.fontSize = '18px';
+    promoText2.style.textAlign = 'center';
     
     // Añadir un evento de clic para cambiar la imagen o eliminar el contenedor
     promoImage.addEventListener('click', () => {
@@ -45,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Añadir la imagen y el texto al contenedor
     promoContainer.appendChild(promoImage);
     promoContainer.appendChild(promoText);
+    promoContainer.appendChild(promoText2);
 
     // Añadir el contenedor al cuerpo del documento
     document.body.appendChild(promoContainer);
