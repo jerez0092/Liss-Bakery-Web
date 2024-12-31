@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     promoImage.addEventListener('click', () => {
         const filename = promoImage.src.split('/').pop();
         if (filename === 'promo 1.jpeg') {
-            promoImage.src = 'catalogo/promos/promo 2.jpeg'; // Reemplaza con la ruta de la segunda imagen
+            promoImage.src = 'promo 2.jpeg'; // Reemplaza con la ruta de la segunda imagen
         } else {
             document.body.removeChild(promoContainer);
         }
