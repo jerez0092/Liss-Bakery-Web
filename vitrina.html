@@ -27,9 +27,18 @@
             height: 100px;
             margin-right: 10px;
         }
+        @keyframes slideDownFadeIn {
+            0% {
+                opacity: 0;
+            transform: translateY(-20px);
+                }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
         h1 {
-            text-align: center;
-            margin: 20px 0; /* Añade margen para separación */
+            animation: slideDownFadeIn 4s ease-out;
         }
         p {
             text-align: center;
@@ -60,6 +69,17 @@
             margin: 10px;
             align-items: center;
         }
+        .slide-text {
+            display: flex; 
+            position: absolute; 
+            bottom: 10px; left: 10px; 
+            background: rgba(0, 0, 0, 0.5); 
+            color: white; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
+            font-size: 1rem; 
+            align-items: center;
+        }
         @media screen and (max-width: 600px) {
             
         }
@@ -85,6 +105,7 @@
         <img src="catalogo/promos/galletas.jpeg" alt="Postre 2">
         <img src="catalogo/promos/adornos.jpeg" alt="Postre 3">
         </div>
+        <div class="slide-text">Contamos con los postres más deliciosos de la región.</div>
     </div>
 
     <div id="pasteles" class="category">
@@ -92,7 +113,8 @@
         <img src="catalogo/basicos/tradicional 3.jpeg" alt="Pastel 1">
         <img src="catalogo/cumpleaños/cumpleaños 4.jpeg" alt="Pastel 2">
         <img src="catalogo/tematicos/personalizado 3.jpeg" alt="Pastel 3">
-    </div>
+        </div>
+        <div class="slide-text">Nuestros Pasteles garantizan un momento de lo más delicioso.</div>
     </div>
 
     <div id="temporada" class="category">
@@ -101,6 +123,7 @@
         <img src="catalogo/promos/promo 2.jpeg" alt="De Temporada 2">
         <img src="catalogo/navideños2024/51.jpg" alt="De Temporada 3">
         </div>
+        <div class="slide-text">Cada temporada es diferente con lo cual nuestros productos se adaptan a los tiempos.</div>
     </div>
 
     <script>
